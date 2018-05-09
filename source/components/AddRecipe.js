@@ -1,16 +1,16 @@
 import React from 'react';
 
-const buttonStyle = {
+const AddRecipeStyle = {
 	margin: '10px auto',
 	color: '#FFFFFF',
 	backgroundColor: '#3366FF',
-	display: 'inline-block'
+	display: 'block'
 };
 
-const Button = () => (
+const AddRecipe = () => (
   <button
     className="btn btn-default"
-	style={buttonStyle}
+	style={AddRecipeStyle}
   >Add Recipe</button>
 );
-export default Button;
+export default AddRecipe;

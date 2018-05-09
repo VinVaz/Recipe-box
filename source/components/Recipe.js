@@ -1,14 +1,18 @@
 import React from 'react';
 
 const RecipeStyle = {
-	margin: '10px auto',
-	backgroundColor: ' #FBE7F4'
+	backgroundColor: ' #FBE7F4',
+	position: 'relative',
+	margin: '0px',
+	top: '0px',
+	left: '0px',
+	border: 'none',
+    width: '100%'
 };
 
 const Recipe = () => (
-  <Recipe
-    className="btn btn-default"
+  <button
 	style={RecipeStyle}
-  >My Recipe One</Recipe>
+  >My Recipe One</button>
 );
 export default Recipe;

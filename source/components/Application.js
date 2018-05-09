@@ -1,14 +1,16 @@
 import React, {Component}  from 'react';
-import Button from './Button';
-import RecipesBox from './RecipesBox'
+import AddRecipe from './AddRecipe';
+import Container from './Container';
+import Editor from './Editor';
 
 
 class Application extends Component{
 	render(){
 	  return(
 		<div>
-		  <RecipesBox/>
-		  <Button/>
+		  <Editor/>
+		  <Container/>
+		  <AddRecipe/>
 		</div>
 	  );
 	}
