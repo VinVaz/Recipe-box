@@ -5,15 +5,19 @@ import Edit from './Edit';
 import Delete from './Delete';
 
 const IngredientsBoxStyle = {
-	margin: '0px',
+	padding: '15px',
 	backgroundColor: "#FFF",
 	textAlign: "center",
-	position: 'relative',
-	height: "200px",
-	width: "500px"
+	borderRadius: '0px 0px 3px 3px',
+	width: "100%"
 };
 const buttonsStyle = {
 	display: 'block'
+}
+const ButtonsBox = {
+	paddingTop: '15px',
+    textAlign: 'left',
+	margin: '0px'
 }
 
 class IngredientsBox extends React.Component {
@@ -21,9 +25,11 @@ class IngredientsBox extends React.Component {
 		return(
 		  <div style={IngredientsBoxStyle}>
 		    <h2>Ingredients</h2>
-		    <Ingredient/>
-			<div style={buttonsStyle}>
-			  <Delete/><Edit/>
+			  <Ingredient/>
+			<div style={ButtonsBox}>
+			  <div style={buttonsStyle}>
+			    <Delete/><Edit/>
+			  </div>
 			</div>
 		  </div>
 		);

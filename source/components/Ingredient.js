@@ -1,19 +1,20 @@
 import React from 'react';
 
 const IngredientStyle = {
-	display: 'inline',
-	margin: '0px',
-	width: '80%',
+	width: '100%',
+	height: '30px',
 	backgroundColor: "#FEFEFE",
+    padding: '3px',
+	borderRadius: '3px',
+	border: '0.5px solid #898989'
 };
 
 class Ingredient extends React.Component {
 	render(){
 		return(
-		   <button
-				className="btn btn-default"
+		   <div
 				style={IngredientStyle}
-			>Eggs</button>
+			>Eggs</div>
 		);
 	};
 }

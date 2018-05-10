@@ -1,9 +1,12 @@
 import React from 'react';
 
 const EditStyle = {
-	margin: '10px auto',
-	color: '#000',
 	backgroundColor: '#FFF',
+	color: '#000',
+	height: '35px',
+	width: '50px',
+	borderRadius: '3px',
+	border: '0.5px solid #898989',
 	display: 'inline'
 };
 

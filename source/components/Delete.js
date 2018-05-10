@@ -1,15 +1,18 @@
 import React from 'react';
 
 const DeleteStyle = {
-	margin: '10px auto',
+	backgroundColor: '#f6895e',
 	color: '#FFF',
-	backgroundColor: '#F00',
+	marginRight: '10px',
+	height: '35px',
+	width: '70px',
+	borderRadius: '3px',
+	border: 'none',
 	display: 'inline'
 };
-
+	
 const Delete = () => (
   <button
-    className="btn btn-default"
 	style={DeleteStyle}
   >Delete</button>
 );

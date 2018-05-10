@@ -3,14 +3,26 @@ import AddRecipe from './AddRecipe';
 import Container from './Container';
 import Editor from './Editor';
 
+const ApplicationStyle = {
+	margin: '20px 50px',
+	position: "relative",
+}
+const BottomBox = {
+	padding: '10px 0px'
+}
+
 
 class Application extends Component{
 	render(){
 	  return(
-		<div>
+		<div style={ApplicationStyle}>
 		  <Editor/>
-		  <Container/>
-		  <AddRecipe/>
+		  <div>
+		    <Container/>
+		  </div>
+		   <div style={BottomBox}>
+		    <AddRecipe/>
+		  </div>
 		</div>
 	  );
 	}

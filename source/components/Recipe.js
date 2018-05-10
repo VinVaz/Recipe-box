@@ -2,12 +2,9 @@ import React from 'react';
 
 const RecipeStyle = {
 	backgroundColor: ' #FBE7F4',
-	position: 'relative',
-	margin: '0px',
-	top: '0px',
-	left: '0px',
 	border: 'none',
-    width: '100%'
+    width: '100%',
+	height: '30px'
 };
 
 const Recipe = () => (

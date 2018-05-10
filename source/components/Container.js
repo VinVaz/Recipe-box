@@ -3,10 +3,12 @@ import RecipeBox from './RecipeBox';
 
 const ContainerStyle = {
 	display: 'inline-block',
-	margin: '20px 10px',
-	backgroundColor: "#EBD7F4",
+	borderRadius: '5px',
+	backgroundColor: "#f9f3fc",
 	position: "relative",
 	textAlign: "center",
+	border: '3px solid #EBD7F4',
+	width: '100%',
 	padding: "20px"
 };
 
