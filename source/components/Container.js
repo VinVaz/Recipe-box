@@ -13,10 +13,19 @@ const ContainerStyle = {
 };
 
 class Container extends React.Component {
+	
+	createRecipe = (recipe) => {
+		return <RecipeBox recipeLabel={recipe.name} ingredients={recipe.ingredients}/>
+	}
+	createRecipeBoxes = (recipes) => {
+	   return recipes.map(this.createRecipe);
+	}
+	
 	render(){
+	  let {allTheRecipes} = this.props;
 		return(
 		  <div style={ContainerStyle}>
-			<RecipeBox/>
+			  {this.createRecipeBoxes(allTheRecipes)}
 		 </div>
 		);
 	};

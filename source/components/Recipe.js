@@ -7,9 +7,9 @@ const RecipeStyle = {
 	height: '30px'
 };
 
-const Recipe = () => (
+const Recipe = ({label}) => (
   <button
 	style={RecipeStyle}
-  >My Recipe One</button>
+  >{label}</button>
 );
 export default Recipe;

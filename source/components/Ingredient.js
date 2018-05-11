@@ -5,16 +5,18 @@ const IngredientStyle = {
 	height: '30px',
 	backgroundColor: "#FEFEFE",
     padding: '3px',
+	marginBottom: '0px',
 	borderRadius: '3px',
 	border: '0.5px solid #898989'
 };
 
 class Ingredient extends React.Component {
 	render(){
+		const {label} = this.props;
 		return(
 		   <div
 				style={IngredientStyle}
-			>Eggs</div>
+			>{label}</div>
 		);
 	};
 }

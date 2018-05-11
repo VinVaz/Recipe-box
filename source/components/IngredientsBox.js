@@ -21,11 +21,20 @@ const ButtonsBox = {
 }
 
 class IngredientsBox extends React.Component {
+	createIngredient = (name) => {
+		return <Ingredient label={name}/>
+	}
+	createIngredientBoxes = (ingredients) => {
+	   return ingredients.map(this.createIngredient);
+	}
+	
+	
 	render(){
+	const {allTheIngredients} = this.props;
 		return(
 		  <div style={IngredientsBoxStyle}>
 		    <h2>Ingredients</h2>
-			  <Ingredient/>
+			  {this.createIngredientBoxes(allTheIngredients)}
 			<div style={ButtonsBox}>
 			  <div style={buttonsStyle}>
 			    <Delete/><Edit/>
