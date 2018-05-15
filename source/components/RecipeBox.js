@@ -11,12 +11,39 @@ const RecipeBoxStyle = {
 };
 
 class RecipeBox extends React.Component {
+	state = {
+		isHidden: true
+	}
+	toggleIngredientsBox = () => {
+		this.setState({
+			isHidden: !this.state.isHidden
+		});
+	}
+	/*{
+		const {hideAllRecipeBoxes} = this.props;
+		const {allRecipeBoxesAreHidden} = this.props;
+		hideAllRecipeBoxes();
+		console.log(allRecipeBoxesAreHidden)
+	}*/
+	shouldComponentUpdate(nextProps, nextState){
+		if(this.state.isHidden == nextState.isHidden){
+		  return false;
+		}
+		else return true
+	}
 	render(){
-		const {recipeLabel, ingredients} = this.props;
+		const {recipeLabel, ingredients, removeRecipe} = this.props;
+		const {isHidden} = this.state;
 		return(
 		  <div style={RecipeBoxStyle}>
-			  <Recipe label={recipeLabel}/>
-			  <IngredientsBox allTheIngredients={ingredients}/>
+			<Recipe 
+			  label={recipeLabel}
+			  toggle={this.toggleIngredientsBox}
+			/>
+			{!isHidden && <IngredientsBox 
+			   allTheIngredients={ingredients}  
+			   removeRecipe={removeRecipe}
+			/>}
 		  </div>
 		);
 	};

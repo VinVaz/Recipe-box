@@ -10,9 +10,10 @@ const AddRecipeStyle = {
 	border: 'none'
 	
 };
-const AddRecipe = () => (
+const AddRecipe = ({toggle}) => (
   <button
 	style={AddRecipeStyle}
+	onClick={toggle}
   >Add Recipe</button>
 );
 export default AddRecipe;

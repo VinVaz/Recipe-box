@@ -13,9 +13,24 @@ const ContainerStyle = {
 };
 
 class Container extends React.Component {
+	state = {
+		allRecipeBoxesAreHidden: true
+	}
+    hideAllRecipeBoxes = () => {
+		this.setState({
+			allRecipeBoxesAreHidden: !this.state.allRecipeBoxesAreHidden
+		});
+	}
 	
 	createRecipe = (recipe) => {
-		return <RecipeBox recipeLabel={recipe.name} ingredients={recipe.ingredients}/>
+	  const {removeRecipe} = this.props;
+		return <RecipeBox 
+		          recipeLabel={recipe.name} 
+				  ingredients={recipe.ingredients}
+				  removeRecipe={removeRecipe}
+				  hideAllRecipeBoxes={this.hideAllRecipeBoxes}
+				  allRecipeBoxesAreHidden={this.state.allRecipeBoxesAreHidden}
+			   />
 	}
 	createRecipeBoxes = (recipes) => {
 	   return recipes.map(this.createRecipe);

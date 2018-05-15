@@ -11,9 +11,12 @@ const DeleteStyle = {
 	display: 'inline'
 };
 	
-const Delete = () => (
-  <button
-	style={DeleteStyle}
-  >Delete</button>
-);
+const Delete = ({removeRecipe}) => {
+  return(
+    <button
+	  style={DeleteStyle}
+	  onClick={removeRecipe}
+    >Delete</button>
+  )
+};
 export default Delete;

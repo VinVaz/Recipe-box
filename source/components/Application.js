@@ -17,38 +17,50 @@ class Application extends Component{
 		recipes: [
 		  {name:"pie", ingredients:['eggs', 'flour', 'sugar']},
 		  {name:"ice cream", ingredients:['eggs', 'sugar']}
-		]
+		],
+		isHidden : true
 	};
+	toggleEditor = () => {
+		this.setState({
+			isHidden: !this.state.isHidden
+		});
+	}
 	/*addNewRecipe = (recipeName) => {
 		let {recipes} = this.state;
         let newRecipes = recipes.push(recipeName);
 		this.setState({
 			recipes: newRecipes
 		});
-	}
-	removeRecipe = (recipeName) => {
+	}*/
+	removeRecipeByName = () => {
+		let recipeName = "pie"
 		let {recipes} = this.state;
-		let index = recipes.indexOf(recipeName);
+		let arrayOfRecipeNames = recipes.map(function(recipe){
+			return recipe.name;
+		});
+		let index = arrayOfRecipeNames.indexOf(recipeName);
 		if(index > -1){
-			let newRecipes = recipes.slice(index, 1);
+			recipes.splice(index, 1);
 		}
 		this.setState({
-			recipes: newRecipes
+			recipes: recipes
 		});
 	}
-	*/
+
 	render(){
 	  const {recipes} = this.state;
+	  const {isHidden} = this.state;
 	  return(
 		<div style={ApplicationStyle}>
-		  <Editor/>
+		  {!isHidden && <Editor/>}
 		  <div>
 		    <Container 
 	          allTheRecipes={recipes}
+			  removeRecipe={this.removeRecipeByName}
 			/>
 		  </div>
 		   <div style={BottomBox}>
-		    <AddRecipe/>
+		    <AddRecipe toggle={this.toggleEditor}/>
 		  </div>
 		</div>
 	  );

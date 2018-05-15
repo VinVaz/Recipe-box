@@ -6,9 +6,9 @@ const EditorStyle = {
 	border: '0.5px solid #000',
 	borderRadius: '5px',
 	position: 'absolute',
-	right: '10px',
-	top: '200px',
-	minWidth: '400px',
+	margin: '0 20% 0 20%',
+	top: '20px',
+	minWidth: '60%',
 	zIndex: "1"
 };
 const HeaderBox = {

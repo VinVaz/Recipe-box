@@ -7,9 +7,11 @@ const RecipeStyle = {
 	height: '30px'
 };
 
-const Recipe = ({label}) => (
+const Recipe = ({label, toggle}) => {
+  return(
   <button
 	style={RecipeStyle}
-  >{label}</button>
-);
+	onClick={toggle}
+  >{label}</button>);
+};
 export default Recipe;
