@@ -81,31 +81,54 @@ const RightFooterButtonsBox = {
 }
 
 class Editor extends React.Component {
+	state={
+		recipeTitle:"",
+		recipeIngredients:""
+	}
+	handleChangesOnRecipeTitle(event){
+		this.setState({
+			recipeTitle: event.target.value
+		});
+	}
+	handleChangesOnRecipeIngredients(event){
+		this.setState({
+			recipeIngredients: event.target.value
+		});
+	}
+	handleSubmit = () => {
+		const {toggle, setRecipes} = this.props;
+		const {recipeTitle, recipeIngredients} = this.state;
+		let myArray = recipeIngredients.split(",");
+		const object = {name:recipeTitle, ingredients:myArray}
+		setRecipes(object);
+		toggle();
+	}
 	render(){
+		const {toggle, editorTitle} = this.props;
 		return(
 		  <div style={EditorStyle}>
 		    <div style={HeaderBox}>
-			  <div style={HeaderBoxLeft}>New Recipe</div>
+			  <div style={HeaderBoxLeft}>{editorTitle}</div>
 			  <div style={HeaderBoxRight}>
-			    <button style={CloseButtonHeader}>x</button>
+			    <button style={CloseButtonHeader} onClick={toggle}>x</button>
 			  </div>
 		    </div>
 			<div style={BodyBox}>
 			  <p>Recipe</p>
-			  <input style={InputStyleOne}/>
+			  <input style={InputStyleOne} onChange={this.handleChangesOnRecipeTitle.bind(this)}/>
 			  <br />
 			  <br />
 			  <p>Ingredients</p>
-			  <input style={InputStyleTwo}/>
+			  <input style={InputStyleTwo} onChange={this.handleChangesOnRecipeIngredients.bind(this)}/>
 			</div>
 			<div style={FooterBox}>
 			  <div style={LeftFooterButtonsBox}>
-			    <button style={FooterLeftButton}>Add recipe</button>
+				<button style={FooterLeftButton} onClick={this.handleSubmit}>Add recipe</button>
 			  </div>
 			  <div style={RightFooterButtonsBox}>
-			    <button style={FooterRightButton}>Close</button>
+				<button style={FooterRightButton} onClick={toggle}>Close</button>
 			  </div>
-		    </div>
+			</div>
 		  </div>
 		);
 	}

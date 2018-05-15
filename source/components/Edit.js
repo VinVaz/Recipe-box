@@ -10,10 +10,11 @@ const EditStyle = {
 	display: 'inline'
 };
 
-const Edit = () => (
+const Edit = ({setEditButtonFuntions}) => (
   <button
     className="btn btn-default"
 	style={EditStyle}
+	onClick={setEditButtonFuntions}
   >Edit</button>
 );
 export default Edit;

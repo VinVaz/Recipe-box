@@ -10,10 +10,19 @@ const AddRecipeStyle = {
 	border: 'none'
 	
 };
-const AddRecipe = ({toggle}) => (
-  <button
-	style={AddRecipeStyle}
-	onClick={toggle}
-  >Add Recipe</button>
-);
+class AddRecipe extends React.Component {
+	setFuntions = () => {
+		const {toggle, setEditorTitle} = this.props;
+		toggle();
+		setEditorTitle("Add recipe");
+	}
+	render(){
+	  return(
+		 <button
+	       style={AddRecipeStyle}
+	       onClick={this.setFuntions}
+         >Add Recipe</button>
+	  );
+	}
+}
 export default AddRecipe;

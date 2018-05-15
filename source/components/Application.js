@@ -14,11 +14,9 @@ const BottomBox = {
 
 class Application extends Component{
 	state = {
-		recipes: [
-		  {name:"pie", ingredients:['eggs', 'flour', 'sugar']},
-		  {name:"ice cream", ingredients:['eggs', 'sugar']}
-		],
-		isHidden : true
+		recipes: [],
+		isHidden : true,
+		editorTitle: ""
 	};
 	toggleEditor = () => {
 		this.setState({
@@ -33,7 +31,7 @@ class Application extends Component{
 		});
 	}*/
 	removeRecipeByName = () => {
-		let recipeName = "pie"
+		let recipeName = "pie";
 		let {recipes} = this.state;
 		let arrayOfRecipeNames = recipes.map(function(recipe){
 			return recipe.name;
@@ -46,21 +44,40 @@ class Application extends Component{
 			recipes: recipes
 		});
 	}
-
+	setRecipes = (object) => {
+		const {recipes} = this.state;
+		recipes.push(object);
+		this.setState({
+			recipes: recipes
+		});
+	}
+    setEditorTitle = (name) => {
+		this.setState({
+			editorTitle: name
+		});
+	}
 	render(){
-	  const {recipes} = this.state;
-	  const {isHidden} = this.state;
+	  const {recipes, isHidden, editorTitle} = this.state;
 	  return(
 		<div style={ApplicationStyle}>
-		  {!isHidden && <Editor/>}
+		  {!isHidden && <Editor 
+		    toggle={this.toggleEditor}
+			editorTitle={editorTitle}
+			setRecipes={this.setRecipes}
+		  />}
 		  <div>
 		    <Container 
 	          allTheRecipes={recipes}
 			  removeRecipe={this.removeRecipeByName}
+			  toggle={this.toggleEditor}
+			  setEditorTitle={this.setEditorTitle}
 			/>
 		  </div>
 		   <div style={BottomBox}>
-		    <AddRecipe toggle={this.toggleEditor}/>
+		    <AddRecipe 
+			  toggle={this.toggleEditor}
+			  setEditorTitle={this.setEditorTitle}
+			/>
 		  </div>
 		</div>
 	  );
