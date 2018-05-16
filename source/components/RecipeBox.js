@@ -13,7 +13,7 @@ const RecipeBoxStyle = {
 class RecipeBox extends React.Component {
 	state = {
 		isHidden: true,
-		recipe: this.props.recipeLabel,
+		recipeLabel: this.props.recipeLabel,
 		ingredients: this.props.ingredients
 	}
 	toggleIngredientsBox = () => {
@@ -38,7 +38,7 @@ class RecipeBox extends React.Component {
 			  removeRecipe,
 			  setEditButtonFuntions
 			  } = this.props;
-		const {isHidden} = this.state;
+		const {isHidden, recipeLabel, ingredients} = this.state;
 		return(
 		  <div style={RecipeBoxStyle}>
 			<Recipe 
@@ -46,8 +46,8 @@ class RecipeBox extends React.Component {
 			  toggle={this.toggleIngredientsBox}
 			/>
 			{!isHidden && <IngredientsBox 
-			   allTheIngredients={this.state.ingredients}
-			   recipeLabel={this.state.label}
+			   allTheIngredients={ingredients}
+			   recipeLabel={recipeLabel}
 			   removeRecipe={removeRecipe}
 			   setEditButtonFuntions={setEditButtonFuntions}
 			/>}
