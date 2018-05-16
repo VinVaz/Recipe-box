@@ -1,23 +1,22 @@
 import React from 'react';
 
 const IngredientStyle = {
-	width: '100%',
 	height: '30px',
-	backgroundColor: "#FEFEFE",
-    padding: '3px',
-	marginBottom: '0px',
-	borderRadius: '3px',
+	textAlign: 'left',
 	border: '0.5px solid #898989'
 };
+const TableDataStyle = {
+    paddingLeft: '10px',
+}
 
 class Ingredient extends React.Component {
 	render(){
 		const {label} = this.props;
 		return(
-		   <div
-				style={IngredientStyle}
-			>{label}</div>
-		);
+		  <tr style={IngredientStyle}>
+		    <td style={TableDataStyle}>{label}</td>
+		  </tr>
+ 		);
 	};
 }
 

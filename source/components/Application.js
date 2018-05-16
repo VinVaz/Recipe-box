@@ -30,8 +30,7 @@ class Application extends Component{
 			recipes: newRecipes
 		});
 	}*/
-	removeRecipeByName = () => {
-		let recipeName = "pie";
+	removeRecipeByName = (recipeName) => {
 		let {recipes} = this.state;
 		let arrayOfRecipeNames = recipes.map(function(recipe){
 			return recipe.name;

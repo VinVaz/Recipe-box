@@ -41,7 +41,8 @@ class RecipeBox extends React.Component {
 			  toggle={this.toggleIngredientsBox}
 			/>
 			{!isHidden && <IngredientsBox 
-			   allTheIngredients={ingredients}  
+			   allTheIngredients={ingredients}
+			   recipeLabel={recipeLabel}
 			   removeRecipe={removeRecipe}
 			   setEditButtonFuntions={setEditButtonFuntions}
 			/>}
