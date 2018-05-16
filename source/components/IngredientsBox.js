@@ -34,10 +34,18 @@ class IngredientsBox extends React.Component {
 	createIngredientRows = (ingredients) => {
 	   return ingredients.map(this.createIngredient);
 	}
-	
+	setProperties = () => {
+
+	}
 	
 	render(){
-	const {allTheIngredients, removeRecipe, toggleEditor, setEditButtonFuntions, recipeLabel} = this.props;
+	const {allTheIngredients,
+	      removeRecipe,
+		  toggleEditor, 
+		  setEditButtonFuntions, 
+		  recipeLabel
+		  } = this.props;
+		  
 		return(
 		  <div style={IngredientsBoxStyle}>
 		    <h2>Ingredients</h2>
@@ -47,7 +55,9 @@ class IngredientsBox extends React.Component {
 			<div style={ButtonsBox}>
 			  <div style={buttonsStyle}>
 	            <Delete removeRecipe={removeRecipe} label={recipeLabel}/>
-			    <Edit setEditButtonFuntions={setEditButtonFuntions}/>
+			    <Edit 
+				  setEditButtonFuntions={setEditButtonFuntions}
+				/>
 			  </div>
 			</div>
 		  </div>

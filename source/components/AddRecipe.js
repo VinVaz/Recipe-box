@@ -14,7 +14,7 @@ class AddRecipe extends React.Component {
 	setFuntions = () => {
 		const {toggle, setEditorTitle} = this.props;
 		toggle();
-		setEditorTitle("Add recipe");
+		setEditorTitle("Add recipe", "Recipe Name", "Enter Ingredients,separated by commas");
 	}
 	render(){
 	  return(

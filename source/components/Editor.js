@@ -104,7 +104,7 @@ class Editor extends React.Component {
 		toggle();
 	}
 	render(){
-		const {toggle, editorTitle} = this.props;
+		const {toggle, editorTitle, editorRecipeInput, editorIngredientsInput} = this.props;
 		return(
 		  <div style={EditorStyle}>
 		    <div style={HeaderBox}>
@@ -115,15 +115,23 @@ class Editor extends React.Component {
 		    </div>
 			<div style={BodyBox}>
 			  <p>Recipe</p>
-			  <input style={InputStyleOne} onChange={this.handleChangesOnRecipeTitle.bind(this)}/>
+			  <input 
+			    style={InputStyleOne} 
+				onChange={this.handleChangesOnRecipeTitle.bind(this)}
+				placeholder={editorRecipeInput}
+			  />
 			  <br />
 			  <br />
 			  <p>Ingredients</p>
-			  <input style={InputStyleTwo} onChange={this.handleChangesOnRecipeIngredients.bind(this)}/>
+			  <input 
+			    style={InputStyleTwo} 
+				onChange={this.handleChangesOnRecipeIngredients.bind(this)}
+				placeholder={editorIngredientsInput}
+			  />
 			</div>
 			<div style={FooterBox}>
 			  <div style={LeftFooterButtonsBox}>
-				<button style={FooterLeftButton} onClick={this.handleSubmit}>Add recipe</button>
+				<button style={FooterLeftButton} onClick={this.handleSubmit}>{editorTitle}</button>
 			  </div>
 			  <div style={RightFooterButtonsBox}>
 				<button style={FooterRightButton} onClick={toggle}>Close</button>

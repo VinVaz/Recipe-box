@@ -16,7 +16,9 @@ class Application extends Component{
 	state = {
 		recipes: [],
 		isHidden : true,
-		editorTitle: ""
+		editorTitle: "",
+		editorRecipeInput: "",
+		editorIngredientsInput:""
 	};
 	toggleEditor = () => {
 		this.setState({
@@ -50,18 +52,22 @@ class Application extends Component{
 			recipes: recipes
 		});
 	}
-    setEditorTitle = (name) => {
+    setEditorTitle = (name, label, values) => {
 		this.setState({
-			editorTitle: name
+			editorTitle: name,
+			editorRecipeInput:label,
+		    editorIngredientsInput: values
 		});
 	}
 	render(){
-	  const {recipes, isHidden, editorTitle} = this.state;
+	  const {recipes, isHidden, editorTitle, editorIngredientsInput, editorRecipeInput} = this.state;
 	  return(
 		<div style={ApplicationStyle}>
 		  {!isHidden && <Editor 
 		    toggle={this.toggleEditor}
 			editorTitle={editorTitle}
+			editorIngredientsInput={editorIngredientsInput}
+			editorRecipeInput={editorRecipeInput}
 			setRecipes={this.setRecipes}
 		  />}
 		  <div>

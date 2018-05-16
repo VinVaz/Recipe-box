@@ -27,10 +27,10 @@ class Container extends React.Component {
 	setEditButtonFuntions = () => {
 		const {toggle, setEditorTitle} = this.props;
 		toggle();
-		setEditorTitle("Edit Recipe");
+		setEditorTitle("Edit Recipe", "label", "ingredients");
 	}
 	createRecipe = (recipe) => {
-	  const {removeRecipe, toggle} = this.props;
+	  const {removeRecipe, setEditorInputValues} = this.props;
 		return <RecipeBox 
 		          recipeLabel={recipe.name} 
 				  ingredients={recipe.ingredients}
