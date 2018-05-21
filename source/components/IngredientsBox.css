@@ -1,0 +1,21 @@
+.IngredientsBoxStyle {
+	padding: 15px;
+	background-color: #FFF;
+	text-align: center;
+	border-radius: 0px 0px 3px 3px;
+	width: 100%;
+	animation: mymove 0.5s;
+	animation-timing-function: ease-out;
+	 -webkit-animation-timing-function: ease-out;
+	-webkit-animation: mymove 0.4s;
+}
+@-webkit-keyframes mymove{
+    from {max-height: 0px; overflow: hidden;}
+    to {}
+}	
+@keyframes mymove {
+    from {max-height: 0px; overflow: hidden;}
+    to {}
+}
+
+

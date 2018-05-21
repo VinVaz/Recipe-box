@@ -12,44 +12,43 @@ const RecipeBoxStyle = {
 
 class RecipeBox extends React.Component {
 	state = {
-		isHidden: true,
-		recipeLabel: this.props.recipeLabel,
-		ingredients: this.props.ingredients
+		ingredientsBoxIsHidden: true,
+		recipeLabel: this.props.recipe.name,
+		ingredients: this.props.recipe.ingredients,
+		key: this.props.key
 	}
 	toggleIngredientsBox = () => {
 		this.setState({
-			isHidden: !this.state.isHidden
+			ingredientsBoxIsHidden: !this.state.ingredientsBoxIsHidden
 		});
 	}
-	/*{
-		const {hideAllRecipeBoxes} = this.props;
-		const {allRecipeBoxesAreHidden} = this.props;
-		hideAllRecipeBoxes();
-		console.log(allRecipeBoxesAreHidden)
-	}*/
+
 	shouldComponentUpdate(nextProps, nextState){
-		if(this.state.isHidden == nextState.isHidden){
+		if(this.state.ingredientsBoxIsHidden == nextState.ingredientsBoxIsHidden){
 		  return false;
 		}
 		else return true
 	}
+	setEditButtonFunctions = () => {
+		const {toggle, setEditorTitle} = this.props;
+		toggle();
+		setEditorTitle("Edit Recipe", this.state.recipeLabel, this.state.ingredients);
+	}
 	render(){
-		const {
-			  removeRecipe,
-			  setEditButtonFuntions
-			  } = this.props;
-		const {isHidden, recipeLabel, ingredients} = this.state;
+		const {removeRecipe, recipe} = this.props;
+		const {ingredientsBoxIsHidden, recipeLabel, ingredients} = this.state;
+  
 		return(
 		  <div style={RecipeBoxStyle}>
 			<Recipe 
 			  label={recipeLabel}
 			  toggle={this.toggleIngredientsBox}
 			/>
-			{!isHidden && <IngredientsBox 
+			{!ingredientsBoxIsHidden && <IngredientsBox 
 			   allTheIngredients={ingredients}
-			   recipeLabel={recipeLabel}
+			   recipe={recipe}
 			   removeRecipe={removeRecipe}
-			   setEditButtonFuntions={setEditButtonFuntions}
+			   setEditButtonFunctions={this.setEditButtonFunctions}
 			/>}
 		  </div>
 		);

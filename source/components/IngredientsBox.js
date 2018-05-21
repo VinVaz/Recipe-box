@@ -1,16 +1,10 @@
 import React from 'react';
-import Recipe from './Recipe';
 import Ingredient from './Ingredient';
 import Edit from './Edit';
 import Delete from './Delete';
+import './ingredientsBox.css';
 
-const IngredientsBoxStyle = {
-	padding: '15px',
-	backgroundColor: "#FFF",
-	textAlign: "center",
-	borderRadius: '0px 0px 3px 3px',
-	width: "100%"
-};
+
 const buttonsStyle = {
 	display: 'block'
 }
@@ -28,35 +22,34 @@ const TableStyle = {
 }
 
 class IngredientsBox extends React.Component {
-	createIngredient = (name) => {
-		return <Ingredient label={name}/>
-	}
-	createIngredientRows = (ingredients) => {
-	   return ingredients.map(this.createIngredient);
-	}
-	setProperties = () => {
-
+	
+	createIngredientTable = (ingredients) => {
+	    const listItems = ingredients.map((name, index) =>{
+		   return <Ingredient label={name} key={index}/>
+	    });
+	    return (
+		  <table style={TableStyle}>
+			{listItems}
+		  </table>
+		);
 	}
 	
 	render(){
 	const {allTheIngredients,
-	      removeRecipe,
-		  toggleEditor, 
-		  setEditButtonFuntions, 
-		  recipeLabel
+		  removeRecipe,
+		  setEditButtonFunctions, 
+		  recipe
 		  } = this.props;
 		  
 		return(
-		  <div style={IngredientsBoxStyle}>
+		  <div className="IngredientsBoxStyle">
 		    <h2>Ingredients</h2>
-			<table style={TableStyle}>
-			  {this.createIngredientRows(allTheIngredients)}
-			</table>
+			{this.createIngredientTable(allTheIngredients)}
 			<div style={ButtonsBox}>
 			  <div style={buttonsStyle}>
-	            <Delete removeRecipe={removeRecipe} label={recipeLabel}/>
+	            <Delete remove={removeRecipe} target={recipe}/>
 			    <Edit 
-				  setEditButtonFuntions={setEditButtonFuntions}
+				  fireEditButtonFunctions={setEditButtonFunctions}
 				/>
 			  </div>
 			</div>

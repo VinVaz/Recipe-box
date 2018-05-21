@@ -11,11 +11,11 @@ const DeleteStyle = {
 	display: 'inline'
 };
 	
-const Delete = ({removeRecipe, label}) => {
+const Delete = ({remove, target}) => {
   return(
     <button
 	  style={DeleteStyle}
-	  onClick={(e) => {removeRecipe(label)}}
+	  onClick={(e) => {remove(target)}}
     >Delete</button>
   )
 };

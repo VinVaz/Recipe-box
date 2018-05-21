@@ -11,7 +11,6 @@ const BottomBox = {
 	padding: '10px 0px'
 }
 
-
 class Application extends Component{
 	state = {
 		recipes: [],
@@ -25,19 +24,10 @@ class Application extends Component{
 			isHidden: !this.state.isHidden
 		});
 	}
-	/*addNewRecipe = (recipeName) => {
+
+	removeRecipe = (recipe) => {
 		let {recipes} = this.state;
-        let newRecipes = recipes.push(recipeName);
-		this.setState({
-			recipes: newRecipes
-		});
-	}*/
-	removeRecipeByName = (recipeName) => {
-		let {recipes} = this.state;
-		let arrayOfRecipeNames = recipes.map(function(recipe){
-			return recipe.name;
-		});
-		let index = arrayOfRecipeNames.indexOf(recipeName);
+		const index = recipes.indexOf(recipe);
 		if(index > -1){
 			recipes.splice(index, 1);
 		}
@@ -65,6 +55,7 @@ class Application extends Component{
 		<div style={ApplicationStyle}>
 		  {!isHidden && <Editor 
 		    toggle={this.toggleEditor}
+			allTheRecipes={recipes}
 			editorTitle={editorTitle}
 			editorIngredientsInput={editorIngredientsInput}
 			editorRecipeInput={editorRecipeInput}
@@ -73,7 +64,7 @@ class Application extends Component{
 		  <div>
 		    <Container 
 	          allTheRecipes={recipes}
-			  removeRecipe={this.removeRecipeByName}
+			  removeRecipe={this.removeRecipe}
 			  toggle={this.toggleEditor}
 			  setEditorTitle={this.setEditorTitle}
 			/>

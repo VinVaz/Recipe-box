@@ -24,24 +24,20 @@ class Container extends React.Component {
 			allRecipeBoxesAreHidden: !this.state.allRecipeBoxesAreHidden
 		});
 	}
-	setEditButtonFuntions = () => {
-		const {toggle, setEditorTitle} = this.props;
-		toggle();
-		setEditorTitle("Edit Recipe", "label", "ingredients");
-	}
-	createRecipe = (recipe) => {
-	  const {removeRecipe, setEditorInputValues} = this.props;
-		return <RecipeBox 
-		          recipeLabel={recipe.name} 
-				  ingredients={recipe.ingredients}
-	              setEditButtonFuntions={this.setEditButtonFuntions}
+	
+	createRecipeBoxes = (recipes) => {
+	    return recipes.map((recipe) => {
+	        const {removeRecipe, setEditorInputValues, toggle, setEditorTitle} = this.props;
+			return <RecipeBox 
+			      key={recipe.id}
+		          recipe={recipe} 
+				  toggle={toggle}
+				  setEditorTitle={setEditorTitle}
 				  removeRecipe={removeRecipe}
 				  hideAllRecipeBoxes={this.hideAllRecipeBoxes}
 				  allRecipeBoxesAreHidden={this.state.allRecipeBoxesAreHidden}
 			   />
-	}
-	createRecipeBoxes = (recipes) => {
-	   return recipes.map(this.createRecipe);
+	    });
 	}
 	render(){
 	  let {allTheRecipes} = this.props;

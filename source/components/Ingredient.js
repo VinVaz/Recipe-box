@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IngredientStyle = {
+const TableRowStyle = {
 	height: '30px',
 	textAlign: 'left',
 	border: '0.5px solid #898989'
@@ -13,7 +13,7 @@ class Ingredient extends React.Component {
 	render(){
 		const {label} = this.props;
 		return(
-		  <tr style={IngredientStyle}>
+		  <tr style={TableRowStyle}>
 		    <td style={TableDataStyle}>{label}</td>
 		  </tr>
  		);
