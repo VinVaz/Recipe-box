@@ -1,6 +1,8 @@
 import React from 'react';
 import Recipe from './Recipe';
 import IngredientsBox from './IngredientsBox';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import './recipeBox.css';
 
 const RecipeBoxStyle = {
 	backgroundColor: '#FBE7F4',
@@ -44,12 +46,17 @@ class RecipeBox extends React.Component {
 			  label={recipeLabel}
 			  toggle={this.toggleIngredientsBox}
 			/>
-			{!ingredientsBoxIsHidden && <IngredientsBox 
-			   allTheIngredients={ingredients}
-			   recipe={recipe}
-			   removeRecipe={removeRecipe}
-			   setEditButtonFunctions={this.setEditButtonFunctions}
-			/>}
+			<CSSTransitionGroup
+			transitionName="ingredientsBox"
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={400}>
+			  {!ingredientsBoxIsHidden && <IngredientsBox 
+			    allTheIngredients={ingredients}
+			    recipe={recipe}
+			    removeRecipe={removeRecipe}
+			    setEditButtonFunctions={this.setEditButtonFunctions}
+			  />}
+			</CSSTransitionGroup>  
 		  </div>
 		);
 	};

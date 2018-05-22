@@ -1,0 +1,22 @@
+.ingredientsBox-enter {
+	max-height: 0px;
+	overflow: hidden;
+}
+
+.ingredientsBox-enter.ingredientsBox-enter-active {
+  max-height: 1000px;
+  transition: all 1000ms;
+}
+
+.ingredientsBox-leave {
+	max-height: 1000px;
+}
+
+.ingredientsBox-leave.ingredientsBox-leave-active {
+	max-height: 0px;
+	overflow: hidden;
+    transition: all 400ms;
+}
+
+
+

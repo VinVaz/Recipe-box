@@ -2,6 +2,8 @@ import React, {Component}  from 'react';
 import AddRecipe from './AddRecipe';
 import Container from './Container';
 import Editor from './Editor';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import './application.css';
 
 const ApplicationStyle = {
 	margin: '20px 50px',
@@ -56,14 +58,19 @@ class Application extends Component{
 	  const {recipes, isHidden, editorTitle, editorIngredientsInput, editorRecipeInput} = this.state;
 	  return(
 		<div style={ApplicationStyle}>
-		  {!isHidden && <Editor 
-		    toggle={this.toggleEditor}
-			allTheRecipes={recipes}
-			editorTitle={editorTitle}
-			editorIngredientsInput={editorIngredientsInput}
-			editorRecipeInput={editorRecipeInput}
-			setRecipes={this.setRecipes}
-		  />}
+		    <CSSTransitionGroup
+			transitionName="editorBox"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300}>
+		      {!isHidden && <Editor 
+				toggle={this.toggleEditor}
+				allTheRecipes={recipes}
+				editorTitle={editorTitle}
+				editorIngredientsInput={editorIngredientsInput}
+				editorRecipeInput={editorRecipeInput}
+				setRecipes={this.setRecipes}
+		      />}
+		    </CSSTransitionGroup>
 		  <div style={isHidden ? null : UnfocusedStyle}>
 		    <div>
 		      <Container 

@@ -7,7 +7,6 @@ const EditorStyle = {
 	borderRadius: '5px',
 	position: 'absolute',
 	margin: '0 20% 0 20%',
-	top: '20px',
 	minWidth: '60%',
 	zIndex: "1"
 };
