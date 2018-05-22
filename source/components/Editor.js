@@ -3,7 +3,7 @@ import React from 'react';
 const EditorStyle = {
 	backgroundColor: '#FFF',
 	color: '#000',
-	border: '0.5px solid #000',
+	border: '0.5px solid #898989',
 	borderRadius: '5px',
 	position: 'absolute',
 	margin: '0 20% 0 20%',
@@ -25,10 +25,16 @@ const FooterBox = {
 	textAlign: 'right',
 	gridGap: '5px'
 }
-const InputStyleOne = {
+const InputStyle = {
+	paddingLeft: '5px',
+	border: '0.5px solid #898989',
+	borderRadius: '3px',
     width: '100%'
 }
-const InputStyleTwo = {
+const TextAreaStyle = {
+	paddingLeft: '5px',
+	border: '0.5px solid #898989',
+	borderRadius: '3px',
     width: '100%',
 	minHeight: '60px' 
 }
@@ -96,7 +102,7 @@ class Editor extends React.Component {
 		});
 	}
 	handleSubmit = () => {
-		const {toggle, setRecipes, allTheRecipes} = this.props;
+		const {toggle, setRecipes} = this.props;
 		const {recipeTitle, recipeIngredients} = this.state;
 		let myArray = recipeIngredients.split(",");
 		let myId = new Date().getTime() + Math.floor(Math.random() * 1000);
@@ -115,30 +121,39 @@ class Editor extends React.Component {
 			    <button style={CloseButtonHeader} onClick={toggle}>x</button>
 			  </div>
 		    </div>
-			<div style={BodyBox}>
-			  <p>Recipe</p>
-			  <input 
-			    style={InputStyleOne} 
-				onChange={this.handleChangesOnRecipeTitle.bind(this)}
-				placeholder={editorRecipeInput}
-			  />
-			  <br />
-			  <br />
-			  <p>Ingredients</p>
-			  <input 
-			    style={InputStyleTwo} 
-				onChange={this.handleChangesOnRecipeIngredients.bind(this)}
-				placeholder={editorIngredientsInput}
-			  />
-			</div>
-			<div style={FooterBox}>
-			  <div style={LeftFooterButtonsBox}>
-				<button style={FooterLeftButton} onClick={this.handleSubmit}>{editorTitle}</button>
-			  </div>
-			  <div style={RightFooterButtonsBox}>
-				<button style={FooterRightButton} onClick={toggle}>Close</button>
-			  </div>
-			</div>
+			<form onSubmit={this.handleSubmit}>
+				<div style={BodyBox}>
+				  <p>Recipe</p>
+				  <input 
+				    type="text"
+					style={InputStyle} 
+					onChange={this.handleChangesOnRecipeTitle.bind(this)}
+					placeholder={editorRecipeInput}
+				  />
+				  <br />
+				  <br />
+				  <p>Ingredients</p>
+				  <textarea 
+				    type="text"
+					style={TextAreaStyle} 
+					onChange={this.handleChangesOnRecipeIngredients.bind(this)}
+					placeholder={editorIngredientsInput}
+				  />
+				</div>
+				<div style={FooterBox}>
+				  <div style={LeftFooterButtonsBox}>
+					<input
+                      type="submit"					
+					  style={FooterLeftButton} 
+					  onClick={this.handleSubmit}
+					  value={editorTitle}
+					/>
+				  </div>
+				  <div style={RightFooterButtonsBox}>
+					<button style={FooterRightButton} onClick={toggle}>Close</button>
+				  </div>
+				</div>
+			</form>
 		  </div>
 		);
 	}

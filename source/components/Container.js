@@ -24,7 +24,6 @@ class Container extends React.Component {
 			allRecipeBoxesAreHidden: !this.state.allRecipeBoxesAreHidden
 		});
 	}
-	
 	createRecipeBoxes = (recipes) => {
 	    return recipes.map((recipe) => {
 	        const {removeRecipe, setEditorInputValues, toggle, setEditorTitle} = this.props;

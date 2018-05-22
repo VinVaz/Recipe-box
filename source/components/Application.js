@@ -5,7 +5,10 @@ import Editor from './Editor';
 
 const ApplicationStyle = {
 	margin: '20px 50px',
-	position: "relative",
+	position: 'relative'
+}
+const UnfocusedStyle = {
+	filter: 'blur(1px)'
 }
 const BottomBox = {
 	padding: '10px 0px'
@@ -61,19 +64,21 @@ class Application extends Component{
 			editorRecipeInput={editorRecipeInput}
 			setRecipes={this.setRecipes}
 		  />}
-		  <div>
-		    <Container 
-	          allTheRecipes={recipes}
-			  removeRecipe={this.removeRecipe}
-			  toggle={this.toggleEditor}
-			  setEditorTitle={this.setEditorTitle}
-			/>
-		  </div>
-		   <div style={BottomBox}>
-		    <AddRecipe 
-			  toggle={this.toggleEditor}
-			  setEditorTitle={this.setEditorTitle}
-			/>
+		  <div style={isHidden ? null : UnfocusedStyle}>
+		    <div>
+		      <Container 
+	            allTheRecipes={recipes}
+			    removeRecipe={this.removeRecipe}
+			    toggle={this.toggleEditor}
+			    setEditorTitle={this.setEditorTitle}
+			  />
+		    </div>
+		    <div style={BottomBox}>
+		      <AddRecipe 
+			    toggle={this.toggleEditor}
+			    setEditorTitle={this.setEditorTitle}
+			  />
+		    </div>
 		  </div>
 		</div>
 	  );
