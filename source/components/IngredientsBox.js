@@ -15,8 +15,7 @@ const TableStyle = {
 	width: '100%',
 	backgroundColor: "#FEFEFE",
 	borderCollapse: 'collapsed',
-	borderRadius: '3px',
-    border: '0.5px solid #898989'	
+	borderRadius: '3px',	
 }
 const IngredientsBoxStyle = {
 	padding: '15px',

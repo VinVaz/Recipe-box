@@ -5,7 +5,7 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import './recipeBox.css';
 
 const RecipeBoxStyle = {
-	backgroundColor: '#FBE7F4',
+	backgroundColor: '#FFE7F4',
 	padding: '2px',
 	marginBottom: '5px',
 	borderRadius: '3px',

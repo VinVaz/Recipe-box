@@ -1,7 +1,10 @@
 import React from 'react';
 
 const RecipeStyle = {
-	backgroundColor: ' #FBE7F4',
+	backgroundColor: '#FFE7F4',
+	color: '#49311C',
+	fontFamily: 'bellotaregular',
+	fontWeight: '600',
 	border: 'none',
     width: '100%',
 	height: '30px'

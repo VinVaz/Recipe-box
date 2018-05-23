@@ -1,5 +1,5 @@
 import React from 'react';
-import image from './close.png';
+import image from '../utils/img/close.png';
 
 const EditorStyle = {
 	backgroundColor: '#FFF',
