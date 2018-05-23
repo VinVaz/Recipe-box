@@ -13,8 +13,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-            presets: ['react', 'env'],
-            plugins: ['transform-class-properties']
+              presets: ['react', 'env'],
+              plugins: ['transform-class-properties']
             }
            }
           ],
@@ -26,7 +26,18 @@ module.exports = {
             { loader: "style-loader" },
             { loader: "css-loader" }
           ] 
-		}
+		},
+		{
+		  test: /\.(png|jpg|gif)$/,
+		  use: [
+			{
+			  loader: 'url-loader',
+			  options: {
+				mimetype: 'image/png'
+			  }
+			}
+		  ]
+        }
       ]
     }
 };

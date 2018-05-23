@@ -29,6 +29,11 @@ class Application extends Component{
 			isHidden: !this.state.isHidden
 		});
 	}
+	closeEditor = () => {
+		this.setState({
+			isHidden: true
+		});
+	}
 
 	removeRecipe = (recipe) => {
 		let {recipes} = this.state;
@@ -63,7 +68,7 @@ class Application extends Component{
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
 		      {!isHidden && <Editor 
-				toggle={this.toggleEditor}
+				close={this.closeEditor}
 				allTheRecipes={recipes}
 				editorTitle={editorTitle}
 				editorIngredientsInput={editorIngredientsInput}

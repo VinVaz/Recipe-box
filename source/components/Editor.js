@@ -1,4 +1,5 @@
 import React from 'react';
+import image from './close.png';
 
 const EditorStyle = {
 	backgroundColor: '#FFF',
@@ -38,13 +39,17 @@ const TextAreaStyle = {
 	minHeight: '60px' 
 }
 const CloseButtonHeader = {
-	backgroundColor: '#fff',
+	backgroundImage: 'url(' + image + ')',
+	backgroundRepeat: 'no-repeat',
+	backgroundPosition: 'center',
+	backgroundSize: '100% 100%',
     display: 'absolute',
 	right: '0px',
 	height:'20px',
+	width: '20px',
 	margin: 'auto 0px auto 0px',
 	left:'20px',
-	borderRadius: '10px'
+	border: 'none',
 }
 const HeaderBoxLeft = {
 	display: 'inline-block',
@@ -100,24 +105,25 @@ class Editor extends React.Component {
 			recipeIngredients: event.target.value
 		});
 	}
-	handleSubmit = () => {
-		const {toggle, setRecipes} = this.props;
+	handleSubmit = (event) => {
+		const {close, setRecipes} = this.props;
 		const {recipeTitle, recipeIngredients} = this.state;
 		let myArray = recipeIngredients.split(",");
 		let myId = new Date().getTime() + Math.floor(Math.random() * 1000);
 		const object = {name:recipeTitle, ingredients:myArray, id: myId}
 		setRecipes(object);
-		toggle();
+		close();
+		event.preventDefault();
 	}
 	
 	render(){
-		const {toggle, editorTitle, editorRecipeInput, editorIngredientsInput} = this.props;
+		const {close, editorTitle, editorRecipeInput, editorIngredientsInput} = this.props;
 		return(
 		  <div style={EditorStyle}>
 		    <div style={HeaderBox}>
 			  <div style={HeaderBoxLeft}>{editorTitle}</div>
 			  <div style={HeaderBoxRight}>
-			    <button style={CloseButtonHeader} onClick={toggle}>x</button>
+			    <button style={CloseButtonHeader} onClick={close}></button>
 			  </div>
 		    </div>
 			<form onSubmit={this.handleSubmit}>
@@ -149,7 +155,7 @@ class Editor extends React.Component {
 					/>
 				  </div>
 				  <div style={RightFooterButtonsBox}>
-					<button style={FooterRightButton} onClick={toggle}>Close</button>
+					<button type="button" style={FooterRightButton} onClick={close}>Close</button>
 				  </div>
 				</div>
 			</form>
