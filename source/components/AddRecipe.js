@@ -12,9 +12,10 @@ const AddRecipeStyle = {
 };
 class AddRecipe extends React.Component {
 	setFuntions = () => {
-		const {toggle, setEditorTitle} = this.props;
+		const {toggle, setEditorTitle, isEditorAdding} = this.props;
 		toggle();
-		setEditorTitle("Add recipe", "Recipe Name", "Enter Ingredients,separated by commas");
+		setEditorTitle("Add recipe", "Recipe name", "Enter ingredients, separated by commas");
+		isEditorAdding(true);
 	}
 	render(){
 	  return(

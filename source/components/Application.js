@@ -19,22 +19,30 @@ const BottomBox = {
 class Application extends Component{
 	state = {
 		recipes: [],
-		isHidden : true,
+		editorIsHidden : true,
 		editorTitle: "",
 		editorRecipeInput: "",
-		editorIngredientsInput:""
+		editorIngredientsInput:"",
+		editorIsAdding: false,
+		selectedRecipeIndex: -1
 	};
 	toggleEditor = () => {
 		this.setState({
-			isHidden: !this.state.isHidden
+			editorIsHidden: !this.state.editorIsHidden
 		});
 	}
 	closeEditor = () => {
 		this.setState({
-			isHidden: true
+			editorIsHidden: true
 		});
 	}
-
+    getSelectedRecipeIndex = (recipe) => {
+		const {recipes} = this.state;
+		const index = recipes.indexOf(recipe);
+		this.setState({
+			selectedRecipeIndex: index
+		});
+	}
 	removeRecipe = (recipe) => {
 		let {recipes} = this.state;
 		const index = recipes.indexOf(recipe);
@@ -45,11 +53,26 @@ class Application extends Component{
 			recipes: recipes
 		});
 	}
+	isEditorAdding = (answer) => {
+		this.setState({
+			editorIsAdding: answer
+		});
+	}
 	setRecipes = (object) => {
 		const {recipes} = this.state;
 		recipes.push(object);
 		this.setState({
 			recipes: recipes
+		});
+	}
+	adjustRecipe = (newObject) => {
+		let {recipes, selectedRecipeIndex} = this.state;
+		let newRecipes = recipes.slice(0);
+		if(selectedRecipeIndex > -1){
+			newRecipes.splice(selectedRecipeIndex, 1, newObject);
+		}
+		this.setState({
+			recipes: newRecipes
 		});
 	}
     setEditorTitle = (name, label, values) => {
@@ -60,35 +83,48 @@ class Application extends Component{
 		});
 	}
 	render(){
-	  const {recipes, isHidden, editorTitle, editorIngredientsInput, editorRecipeInput} = this.state;
+	  
+	  const {recipes,
+			 editorIsHidden,
+			 editorTitle,
+			 editorIngredientsInput,
+			 editorRecipeInput,
+			 editorIsAdding
+	  } = this.state;
+	  
 	  return(
 		<div style={ApplicationStyle}>
 		    <CSSTransitionGroup
 			transitionName="editorBox"
             transitionEnterTimeout={500}
             transitionLeaveTimeout={300}>
-		      {!isHidden && <Editor 
+		      {!editorIsHidden && <Editor 
 				close={this.closeEditor}
 				allTheRecipes={recipes}
 				editorTitle={editorTitle}
 				editorIngredientsInput={editorIngredientsInput}
 				editorRecipeInput={editorRecipeInput}
 				setRecipes={this.setRecipes}
+				adjustRecipe={this.adjustRecipe}
+				editorIsAdding={editorIsAdding}
 		      />}
 		    </CSSTransitionGroup>
-		  <div style={isHidden ? null : UnfocusedStyle}>
+		  <div style={editorIsHidden ? null : UnfocusedStyle}>
 		    <div>
 		      <Container 
 	            allTheRecipes={recipes}
 			    removeRecipe={this.removeRecipe}
 			    toggle={this.toggleEditor}
 			    setEditorTitle={this.setEditorTitle}
+				isEditorAdding={this.isEditorAdding}
+				getSelectedRecipeIndex={this.getSelectedRecipeIndex}
 			  />
 		    </div>
 		    <div style={BottomBox}>
 		      <AddRecipe 
 			    toggle={this.toggleEditor}
 			    setEditorTitle={this.setEditorTitle}
+				isEditorAdding={this.isEditorAdding}
 			  />
 		    </div>
 		  </div>

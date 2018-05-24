@@ -37,12 +37,15 @@ class IngredientsBox extends React.Component {
 		  </table>
 		);
 	}
-	
+	editButtonFunctions = () => {
+		const {setEditButtonFunctions, recipe, getSelectedRecipeIndex} = this.props;
+	}
 	render(){
 	const {allTheIngredients,
 		  removeRecipe,
 		  setEditButtonFunctions, 
-		  recipe
+		  recipe,
+		  getSelectedRecipeIndex
 		  } = this.props;
 		  
 		return(

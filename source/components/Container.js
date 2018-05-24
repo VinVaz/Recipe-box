@@ -26,7 +26,14 @@ class Container extends React.Component {
 	}
 	createRecipeBoxes = (recipes) => {
 	    return recipes.map((recipe) => {
-	        const {removeRecipe, setEditorInputValues, toggle, setEditorTitle} = this.props;
+	        const {removeRecipe,
+			setEditorInputValues,
+			toggle,
+			setEditorTitle,
+			getSelectedRecipeIndex,
+			isEditorAdding
+			} = this.props;
+			
 			return <RecipeBox 
 			      key={recipe.id}
 		          recipe={recipe} 
@@ -35,6 +42,8 @@ class Container extends React.Component {
 				  removeRecipe={removeRecipe}
 				  hideAllRecipeBoxes={this.hideAllRecipeBoxes}
 				  allRecipeBoxesAreHidden={this.state.allRecipeBoxesAreHidden}
+				  getSelectedRecipeIndex={getSelectedRecipeIndex}
+				  isEditorAdding={isEditorAdding}
 			   />
 	    });
 	}

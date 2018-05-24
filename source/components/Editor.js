@@ -106,12 +106,16 @@ class Editor extends React.Component {
 		});
 	}
 	handleSubmit = (event) => {
-		const {close, setRecipes} = this.props;
+		const {close, setRecipes, adjustRecipe, editorIsAdding} = this.props;
 		const {recipeTitle, recipeIngredients} = this.state;
 		let myArray = recipeIngredients.split(",");
 		let myId = new Date().getTime() + Math.floor(Math.random() * 1000);
 		const object = {name:recipeTitle, ingredients:myArray, id: myId}
-		setRecipes(object);
+		if(editorIsAdding) {
+			setRecipes(object);
+		} else {
+			adjustRecipe(object);
+		}
 		close();
 		event.preventDefault();
 	}

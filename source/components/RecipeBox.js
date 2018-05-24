@@ -32,10 +32,13 @@ class RecipeBox extends React.Component {
 		else return true
 	}
 	setEditButtonFunctions = () => {
-		const {toggle, setEditorTitle} = this.props;
+		const {toggle, setEditorTitle, getSelectedRecipeIndex, recipe, isEditorAdding} = this.props;
 		toggle();
 		setEditorTitle("Edit Recipe", this.state.recipeLabel, this.state.ingredients);
+		isEditorAdding(false);
+		getSelectedRecipeIndex(recipe);
 	}
+	
 	render(){
 		const {removeRecipe, recipe} = this.props;
 		const {ingredientsBoxIsHidden, recipeLabel, ingredients} = this.state;
