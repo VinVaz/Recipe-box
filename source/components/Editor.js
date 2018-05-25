@@ -93,16 +93,19 @@ const RightFooterButtonsBox = {
 class Editor extends React.Component {
 	state={
 		recipeTitle:"",
-		recipeIngredients:""
+		recipeIngredients:"",
+		isTyping: false
 	}
 	handleChangesOnRecipeTitle(event){
 		this.setState({
-			recipeTitle: event.target.value
+			recipeTitle: event.target.value,
+			isTyping: true
 		});
 	}
 	handleChangesOnRecipeIngredients(event){
 		this.setState({
-			recipeIngredients: event.target.value
+			recipeIngredients: event.target.value,
+			isTyping: true
 		});
 	}
 	handleSubmit = (event) => {
@@ -121,7 +124,8 @@ class Editor extends React.Component {
 	}
 	
 	render(){
-		const {close, editorTitle, editorRecipeInput, editorIngredientsInput} = this.props;
+		const {close, editorTitle, editorRecipeInput, editorIngredientsInput, editorIsAdding} = this.props;
+		const {isTyping} = this.state;
 		return(
 		  <div style={EditorStyle}>
 		    <div style={HeaderBox}>
@@ -137,7 +141,8 @@ class Editor extends React.Component {
 				    type="text"
 					style={InputStyle} 
 					onChange={this.handleChangesOnRecipeTitle.bind(this)}
-					placeholder={editorRecipeInput}
+					placeholder={editorIsAdding ? editorRecipeInput : null}
+					value={editorIsAdding ? null : (isTyping ?  null : editorRecipeInput)}
 				  />
 				  <br />
 				  <br />
@@ -146,7 +151,8 @@ class Editor extends React.Component {
 				    type="text"
 					style={TextAreaStyle} 
 					onChange={this.handleChangesOnRecipeIngredients.bind(this)}
-					placeholder={editorIngredientsInput}
+					placeholder={editorIsAdding ? editorIngredientsInput : null}
+					value={editorIsAdding ? null : (isTyping ?  null : editorIngredientsInput)}
 				  />
 				</div>
 				<div style={FooterBox}>
